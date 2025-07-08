@@ -1,15 +1,29 @@
 import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+import authRoutes from './auth/auth.router';
+// import other routes as needed...
+
+dotenv.config(); // Load env variables
 
 const app = express();
-app.use(express.json()); //used to parse JSON bodies
+const PORT = process.env.PORT || 8081;
 
-// routes
+// Middleware
+app.use(cors());
+app.use(express.json()); // Parse JSON bodies
 
+// Routes
+app.use('/api/auth', authRoutes);
+// app.use('/api/doctors', doctorRoutes); // when you add more
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-})
+// Health check or welcome route
+app.get('/', (_req, res) => {
+  res.send(' Server is running!');
+});
 
-app.listen(8081, () => {
-    console.log('Server is running on http://localhost:8081');
-}) 
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
