@@ -82,7 +82,7 @@ export const payments = pgTable('payments', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
 
-// Complaints/Support Tickets Table
+// Complaints
 export const complaints = pgTable('complaints', {
   complaintId: serial('complaint_id').primaryKey(),
   userId: integer('user_id').references(() => users.userId).notNull(),
