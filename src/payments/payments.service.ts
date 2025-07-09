@@ -1,3 +1,4 @@
+// payments.service.ts
 import { db, payments } from '../Drizzle/db';
 import { eq } from 'drizzle-orm';
 
@@ -7,7 +8,9 @@ export class PaymentService {
   }
 
   static getById(id: number) {
-    return db.query.payments.findFirst({ where: eq(payments.paymentId, id) });
+    return db.query.payments.findFirst({
+      where: eq(payments.paymentId, id),
+    });
   }
 
   static create(data: typeof payments.$inferInsert) {
