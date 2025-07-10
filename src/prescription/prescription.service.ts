@@ -23,4 +23,3 @@ export class PrescriptionService {
   }
 }
 
-// prescription.controller.ts
