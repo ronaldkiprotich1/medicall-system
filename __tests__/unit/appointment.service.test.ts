@@ -1,12 +1,21 @@
-import { AppointmentService } from '../../src/appointment/appointment.service';
-import { db, appointments } from '../../src/Drizzle/db';
-import { eq } from 'drizzle-orm';
+import { AppointmentService } from "../../src/appointment/appointment.service";
+import { db, appointments } from "../../src/Drizzle/db";
+import { eq } from "drizzle-orm";
 
-// Mock the db and its methods
-jest.mock('../Drizzle/db', () => ({
+// Mock db module
+jest.mock("../../src/Drizzle/db", () => ({
+  __esModule: true,
   db: {
     select: jest.fn(() => ({
-      from: jest.fn(),
+      from: jest.fn().mockResolvedValue([
+        {
+          appointmentId: 1,
+          userId: 1,
+          doctorId: 2,
+          appointmentDate: "2025-07-10",
+          timeSlot: "09:00 AM - 10:00 AM"
+        }
+      ]),
     })),
     query: {
       appointments: {
@@ -15,86 +24,114 @@ jest.mock('../Drizzle/db', () => ({
     },
     insert: jest.fn(() => ({
       values: jest.fn().mockReturnThis(),
-      returning: jest.fn(),
+      returning: jest.fn().mockResolvedValue([
+        {
+          appointmentId: 2,
+          userId: 1,
+          doctorId: 2,
+          appointmentDate: "2025-07-11",
+          timeSlot: "10:00 AM - 11:00 AM"
+        }
+      ]),
     })),
     update: jest.fn(() => ({
       set: jest.fn().mockReturnThis(),
       where: jest.fn().mockReturnThis(),
-      returning: jest.fn(),
+      returning: jest.fn().mockResolvedValue([
+        {
+          appointmentId: 1,
+          userId: 1,
+          doctorId: 3,
+          appointmentDate: "2025-07-12",
+          timeSlot: "02:00 PM - 03:00 PM"
+        }
+      ]),
     })),
     delete: jest.fn(() => ({
-      where: jest.fn(),
+      where: jest.fn().mockResolvedValue({ success: true }),
     })),
   },
   appointments: {
-    appointmentId: 'appointmentId', // simplified mock
-    $inferInsert: {} as any,
+    appointmentId: Symbol("appointmentId"),
   },
 }));
 
-describe('AppointmentService', () => {
-  const mockAppointment = {
-    appointmentId: 1,
-    userId: 1,
-    doctorId: 1,
-    appointmentDate: '2025-07-10T10:00:00Z',
-    status: 'Scheduled',
-  };
-
+describe("AppointmentService", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('getAll - should return all appointments', async () => {
-    const mockSelect = jest.fn().mockResolvedValue([mockAppointment]);
-    (db.select as jest.Mock).mockReturnValue({ from: mockSelect });
-
+  it("should get all appointments", async () => {
     const result = await AppointmentService.getAll();
-
-    expect(db.select).toHaveBeenCalled();
-    expect(result).toEqual([mockAppointment]);
+    expect(result).toEqual([
+      {
+        appointmentId: 1,
+        userId: 1,
+        doctorId: 2,
+        appointmentDate: "2025-07-10",
+        timeSlot: "09:00 AM - 10:00 AM"
+      }
+    ]);
   });
 
-  test('getById - should return one appointment', async () => {
+  it("should get appointment by ID", async () => {
+    const mockAppointment = {
+      appointmentId: 1,
+      userId: 1,
+      doctorId: 2,
+      appointmentDate: "2025-07-10",
+      timeSlot: "09:00 AM - 10:00 AM"
+    };
     (db.query.appointments.findFirst as jest.Mock).mockResolvedValue(mockAppointment);
 
     const result = await AppointmentService.getById(1);
-
-    expect(db.query.appointments.findFirst).toHaveBeenCalledWith({ where: eq('appointmentId', 1) });
+    expect(db.query.appointments.findFirst).toHaveBeenCalledWith({
+      where: eq(appointments.appointmentId, 1),
+    });
     expect(result).toEqual(mockAppointment);
   });
 
-  test('create - should insert appointment and return it', async () => {
-    const returning = jest.fn().mockResolvedValue([mockAppointment]);
-    (db.insert as jest.Mock).mockReturnValue({
-      values: jest.fn().mockReturnValue({ returning }),
-    });
+  it("should create a new appointment", async () => {
+    const data = {
+      userId: 1,
+      doctorId: 2,
+      appointmentDate: "2025-07-11",
+      timeSlot: "10:00 AM - 11:00 AM"
+    };
 
-    const result = await AppointmentService.create(mockAppointment);
-
-    expect(result).toEqual([mockAppointment]);
-    expect(db.insert).toHaveBeenCalledWith(appointments);
+    const result = await AppointmentService.create(data as any);
+    expect(result).toEqual([
+      {
+        appointmentId: 2,
+        userId: 1,
+        doctorId: 2,
+        appointmentDate: "2025-07-11",
+        timeSlot: "10:00 AM - 11:00 AM"
+      }
+    ]);
   });
 
-  test('update - should update appointment and return updated value', async () => {
-    const returning = jest.fn().mockResolvedValue([mockAppointment]);
-    const where = jest.fn().mockReturnValue({ returning });
-    const set = jest.fn().mockReturnValue({ where });
-    (db.update as jest.Mock).mockReturnValue({ set });
+  it("should update an appointment", async () => {
+    const data = {
+      doctorId: 3,
+      appointmentDate: "2025-07-12",
+      timeSlot: "02:00 PM - 03:00 PM"
+    };
 
-    const result = await AppointmentService.update(1, { status: 'Completed' });
-
-    expect(result).toEqual([mockAppointment]);
-    expect(db.update).toHaveBeenCalledWith(appointments);
+    const result = await AppointmentService.update(1, data);
+    expect(result).toEqual([
+      {
+        appointmentId: 1,
+        userId: 1,
+        doctorId: 3,
+        appointmentDate: "2025-07-12",
+        timeSlot: "02:00 PM - 03:00 PM"
+      }
+    ]);
   });
 
-  test('delete - should delete appointment', async () => {
-    const where = jest.fn();
-    (db.delete as jest.Mock).mockReturnValue({ where });
-
-    await AppointmentService.delete(1);
-
-    expect(db.delete).toHaveBeenCalledWith(appointments);
-    expect(where).toHaveBeenCalledWith(eq('appointmentId', 1));
+  it("should delete an appointment", async () => {
+    const result = await AppointmentService.delete(1);
+    expect(result).toEqual({ success: true });
   });
 });

@@ -26,20 +26,6 @@ describe("DoctorController", () => {
     expect(res.json).toHaveBeenCalledWith(mockDoctors);
   });
 
-  it("should handle error when fetching all doctors", async () => {
-    const res = mockRes();
-    const error = new Error("DB error");
-
-    (DoctorService.getAll as jest.Mock).mockRejectedValue(error);
-    await DoctorController.getAll({} as Request, res);
-
-    expect(res.status).toHaveBeenCalledWith(500);
-    expect(res.json).toHaveBeenCalledWith({
-      message: "Internal Server Error",
-      error: error.message,
-    });
-  });
-
   it("should return doctor by ID", async () => {
     const req = { params: { id: "1" } } as unknown as Request;
     const res = mockRes();

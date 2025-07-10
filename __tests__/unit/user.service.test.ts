@@ -3,7 +3,7 @@ import { db, users } from '../../src/Drizzle/db';
 import { eq } from 'drizzle-orm';
 
 // Mock Drizzle ORM db methods with proper chaining and argument handling
-jest.mock('../Drizzle/db', () => {
+jest.mock('../../src/Drizzle/db', () => {
   // Mock builder to simulate chainable query builder methods
   const mockBuilder = () => ({
     values: jest.fn().mockReturnThis(),
