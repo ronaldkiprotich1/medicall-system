@@ -2,21 +2,21 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "NodeNext",
-    "rootDir": "./src",
-    // "moduleResolution": "node10",
-    "moduleResolution": "nodenext",
+    "rootDir": ".",                                // ✅ root includes both src and __tests__
     "outDir": "./dist",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true, 
-    /* Type Checking */
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["node", "jest"]                      // ✅ needed for test environment
   },
   "include": [
-    "src/**/*"   
+    "src/**/*",
+    "__tests__/**/*"                               // ✅ explicitly include your tests
   ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
-  ],
+  ]
 }
