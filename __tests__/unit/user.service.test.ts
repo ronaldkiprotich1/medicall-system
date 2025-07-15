@@ -2,7 +2,7 @@ import { UserService } from '../../src/user/user.service';
 import { db, users } from '../../src/Drizzle/db';
 import { eq } from 'drizzle-orm';
 
-// Mock Drizzle ORM db methods with proper chaining and argument handling
+
 jest.mock('../../src/Drizzle/db', () => {
   // Mock builder to simulate chainable query builder methods
   const mockBuilder = () => ({
@@ -25,7 +25,7 @@ jest.mock('../../src/Drizzle/db', () => {
       update: jest.fn().mockImplementation(() => mockBuilder()),
       delete: jest.fn().mockImplementation(() => mockBuilder()),
     },
-    users: {}, // Keep as empty object or import real users table if needed
+    users: {}, 
     eq: jest.requireActual('drizzle-orm').eq,
   };
 });
@@ -127,6 +127,7 @@ describe('UserService', () => {
       const deleteBuilder = {
         where: jest.fn().mockReturnThis(),
       };
+      
       (db.delete as jest.Mock).mockReturnValue(deleteBuilder);
 
       await UserService.delete(1);

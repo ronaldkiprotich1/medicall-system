@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>3/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">37.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>3/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,30 +91,30 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// payments.service.ts
@@ -122,26 +122,26 @@ import { db, payments } from '../Drizzle/db';
 import { eq } from 'drizzle-orm';
 &nbsp;
 export class PaymentService {
-  static getAll() {
-    return db.select().from(payments);
+<span class="fstat-no" title="function not covered" >  static </span>getAll() {
+<span class="cstat-no" title="statement not covered" >    return db.select().from(payments);</span>
   }
 &nbsp;
-  static getById(id: number) {
-    return db.query.payments.findFirst({
+<span class="fstat-no" title="function not covered" >  static </span>getById(id: number) {
+<span class="cstat-no" title="statement not covered" >    return db.query.payments.findFirst({</span>
       where: eq(payments.paymentId, id),
     });
   }
 &nbsp;
-  static create(data: typeof payments.$inferInsert) {
-    return db.insert(payments).values(data).returning();
+<span class="fstat-no" title="function not covered" >  static </span>create(data: typeof payments.$inferInsert) {
+<span class="cstat-no" title="statement not covered" >    return db.insert(payments).values(data).returning();</span>
   }
 &nbsp;
-  static update(id: number, data: Partial&lt;typeof payments.$inferInsert&gt;) {
-    return db.update(payments).set(data).where(eq(payments.paymentId, id)).returning();
+<span class="fstat-no" title="function not covered" >  static </span>update(id: number, data: Partial&lt;typeof payments.$inferInsert&gt;) {
+<span class="cstat-no" title="statement not covered" >    return db.update(payments).set(data).where(eq(payments.paymentId, id)).returning();</span>
   }
 &nbsp;
-  static delete(id: number) {
-    return db.delete(payments).where(eq(payments.paymentId, id));
+<span class="fstat-no" title="function not covered" >  static </span>delete(id: number) {
+<span class="cstat-no" title="statement not covered" >    return db.delete(payments).where(eq(payments.paymentId, id));</span>
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -151,7 +151,7 @@ export class PaymentService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-10T12:24:13.261Z
+                at 2025-07-14T12:05:29.208Z
             </div>
         <script src="../prettify.js"></script>
         <script>

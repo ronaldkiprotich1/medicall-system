@@ -1,129 +1,112 @@
-import { PrescriptionService } from '../../src/prescription/prescription.service';
-import { db, prescriptions } from '../../src/Drizzle/db';
+// __tests__/integration/user.test.ts
+import request from 'supertest';
+import express from 'express';
+import userRoutes from '../../src/user/user.router';
+import { db, users } from '../../src/Drizzle/db';
 import { eq } from 'drizzle-orm';
 
-// Mock Drizzle ORM db methods with proper chaining and argument handling
-jest.mock('../../src/Drizzle/db', () => {
-  const mockBuilder = () => ({
-    values: jest.fn().mockReturnThis(),
-    set: jest.fn().mockReturnThis(),
-    where: jest.fn().mockReturnThis(),
-    returning: jest.fn().mockResolvedValue(['mocked_return']),
-  });
+const app = express();
+app.use(express.json());
+app.use('/users', userRoutes);
 
-  return {
-    db: {
-      select: jest.fn().mockReturnThis(),
-      from: jest.fn(),
-      query: {
-        prescriptions: {
-          findFirst: jest.fn(),
-        },
-      },
-      insert: jest.fn().mockImplementation(() => mockBuilder()),
-      update: jest.fn().mockImplementation(() => mockBuilder()),
-      delete: jest.fn().mockImplementation(() => mockBuilder()),
-    },
-    prescriptions: {},
-    eq: jest.requireActual('drizzle-orm').eq,
+describe('User API Integration Tests', () => {
+  let createdUserId: number;
+  let token: string;
+
+  const sampleUser = {
+    firstName: 'Alice',
+    lastName: 'Smith',
+    email: 'alice@example.com',
+    password: 'Password123!',
+    role: 'patient',
   };
-});
 
-describe('PrescriptionService', () => {
-  afterEach(() => {
-    jest.clearAllMocks();
+  afterAll(async () => {
+    if (createdUserId) {
+      await db.delete(users).where(eq(users.userId, createdUserId));
+    }
   });
 
-  describe('getAll', () => {
-    it('should return all prescriptions', async () => {
-      const mockPrescriptions = [{ prescriptionId: 1, medications: 'Drug A', doctorId: 1, appointmentId: 1, patientId: 1 }];
-      (db.select as jest.Mock).mockReturnValue({ from: jest.fn().mockResolvedValue(mockPrescriptions) });
+  describe('POST /users/register', () => {
+    it('should register a new user', async () => {
+      const res = await request(app).post('/users/register').send(sampleUser);
+      console.log('REGISTER RESPONSE:', res.status, res.body);
 
-      const result = await PrescriptionService.getAll();
+      expect(res.status).toBe(201);
+      expect(res.body).toHaveProperty('userId');
+      expect(res.body.email).toBe(sampleUser.email);
 
-      expect(result).toEqual(mockPrescriptions);
-      expect(db.select).toHaveBeenCalled();
-      expect(db.select().from).toHaveBeenCalledWith(prescriptions);
+      createdUserId = res.body.userId;
     });
   });
 
-  describe('getById', () => {
-    it('should return a prescription by id', async () => {
-      const mockPrescription = { prescriptionId: 1, medications: 'Drug A', doctorId: 1, appointmentId: 1, patientId: 1 };
-      (db.query.prescriptions.findFirst as jest.Mock).mockResolvedValue(mockPrescription);
+  describe('POST /users/login', () => {
+    it('should login and return a token', async () => {
+      const res = await request(app).post('/users/login').send({
+        email: sampleUser.email,
+        password: sampleUser.password,
+      });
+      console.log('LOGIN RESPONSE:', res.status, res.body);
 
-      const result = await PrescriptionService.getById(1);
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveProperty('token');
 
-      expect(result).toEqual(mockPrescription);
-      expect(db.query.prescriptions.findFirst).toHaveBeenCalledWith({ where: eq(prescriptions.prescriptionId, 1) });
+      token = res.body.token;
+    });
+
+    it('should fail login with wrong password', async () => {
+      const res = await request(app).post('/users/login').send({
+        email: sampleUser.email,
+        password: 'WrongPassword',
+      });
+      console.log('WRONG LOGIN RESPONSE:', res.status, res.body);
+
+      expect(res.status).toBe(401);
+      expect(res.body).toHaveProperty('error', 'Invalid credentials');
     });
   });
 
-  describe('create', () => {
-    it('should create a new prescription and return it', async () => {
-      const newPrescription = {
-        doctorId: 1,
-        appointmentId: 10,
-        patientId: 5,
-        medications: 'Drug B',
-        dosage: '10mg',
-        notes: 'Take after meals',
-        instructions: 'Twice a day',
-      };
-      const createdPrescription = [{ prescriptionId: 2, ...newPrescription }];
-
-      const insertBuilder = {
-        values: jest.fn().mockReturnThis(),
-        returning: jest.fn().mockResolvedValue(createdPrescription),
-      };
-      (db.insert as jest.Mock).mockReturnValue(insertBuilder);
-
-      const result = await PrescriptionService.create(newPrescription);
-
-      expect(result).toEqual(createdPrescription);
-      expect(db.insert).toHaveBeenCalledWith(prescriptions);
-      expect(insertBuilder.values).toHaveBeenCalledWith(newPrescription);
-      expect(insertBuilder.returning).toHaveBeenCalled();
+  describe('GET /users', () => {
+    it('should return all users', async () => {
+      const res = await request(app).get('/users');
+      expect(res.status).toBe(200);
+      expect(Array.isArray(res.body)).toBe(true);
     });
   });
 
-  describe('update', () => {
-    it('should update a prescription and return the updated prescription', async () => {
-      const updatedPrescription = [{ prescriptionId: 1, medications: 'Drug C', doctorId: 1, appointmentId: 1, patientId: 1 }];
+  describe('GET /users/:id', () => {
+    it('should return the created user by ID', async () => {
+      const res = await request(app).get(`/users/${createdUserId}`);
+      expect(res.status).toBe(200);
+      expect(res.body).toHaveProperty('userId', createdUserId);
+    });
 
-      const updateBuilder = {
-        set: jest.fn().mockReturnThis(),
-        where: jest.fn().mockReturnThis(),
-        returning: jest.fn().mockResolvedValue(updatedPrescription),
-      };
-      (db.update as jest.Mock).mockReturnValue(updateBuilder);
-
-      const updateData = {
-        medications: 'Drug C',
-        dosage: '20mg',
-      };
-
-      const result = await PrescriptionService.update(1, updateData);
-
-      expect(result).toEqual(updatedPrescription);
-      expect(db.update).toHaveBeenCalledWith(prescriptions);
-      expect(updateBuilder.set).toHaveBeenCalledWith(updateData);
-      expect(updateBuilder.where).toHaveBeenCalledWith(eq(prescriptions.prescriptionId, 1));
-      expect(updateBuilder.returning).toHaveBeenCalled();
+    it('should return 404 for non-existing user', async () => {
+      const res = await request(app).get('/users/999999');
+      expect(res.status).toBe(404);
+      expect(res.body).toHaveProperty('error', 'User not found');
     });
   });
 
-  describe('delete', () => {
-    it('should delete a prescription', async () => {
-      const deleteBuilder = {
-        where: jest.fn().mockReturnThis(),
-      };
-      (db.delete as jest.Mock).mockReturnValue(deleteBuilder);
+  describe('PUT /users/:id', () => {
+    it('should update the user', async () => {
+      const res = await request(app)
+        .put(`/users/${createdUserId}`)
+        .send({ firstName: 'UpdatedName' });
 
-      await PrescriptionService.delete(1);
+      expect(res.status).toBe(200);
+      expect(res.body.firstName).toBe('UpdatedName');
+    });
+  });
 
-      expect(db.delete).toHaveBeenCalledWith(prescriptions);
-      expect(deleteBuilder.where).toHaveBeenCalledWith(eq(prescriptions.prescriptionId, 1));
+  describe('DELETE /users/:id', () => {
+    it('should delete the user', async () => {
+      const res = await request(app).delete(`/users/${createdUserId}`);
+      expect(res.status).toBe(204);
+
+      // Confirm deletion
+      const getRes = await request(app).get(`/users/${createdUserId}`);
+      expect(getRes.status).toBe(404);
     });
   });
 });

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for prescription/prescription.service.ts</title>
+    <title>Code coverage report for complaints/complaints.router.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">prescription</a> prescription.service.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">complaints</a> complaints.router.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -88,56 +88,59 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { db, prescriptions } from '../Drizzle/db';
-import { eq } from 'drizzle-orm';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router, Request, Response } from 'express';
+import { ComplaintController } from '../complaints/complaints.controller';
 &nbsp;
-export class PrescriptionService {
-  static getAll() {
-    return db.select().from(prescriptions);
-  }
+const router = Router();
 &nbsp;
-  static getById(id: number) {
-    return db.query.prescriptions.findFirst({ where: eq(prescriptions.prescriptionId, id) });
-  }
+router.get('/', async (req: Request, res: Response) =&gt; {
+  await ComplaintController.getAll(req, res);
+});
 &nbsp;
-  static create(data: typeof prescriptions.$inferInsert) {
-    return db.insert(prescriptions).values(data).returning();
-  }
+router.get('/:id', async (req: Request, res: Response) =&gt; {
+  await ComplaintController.getById(req, res);
+});
 &nbsp;
-  static update(id: number, data: Partial&lt;typeof prescriptions.$inferInsert&gt;) {
-    return db.update(prescriptions).set(data).where(eq(prescriptions.prescriptionId, id)).returning();
-  }
+router.post('/', async (req: Request, res: Response) =&gt; {
+  await ComplaintController.create(req, res);
+});
 &nbsp;
-  static delete(id: number) {
-    return db.delete(prescriptions).where(eq(prescriptions.prescriptionId, id));
-  }
-}
+router.put('/:id', async (req: Request, res: Response) =&gt; {
+  await ComplaintController.update(req, res);
+});
 &nbsp;
+router.delete('/:id', async (req: Request, res: Response) =&gt; {
+  await ComplaintController.delete(req, res);
+});
+&nbsp;
+export default router;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

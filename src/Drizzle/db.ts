@@ -18,7 +18,7 @@ main()
   .catch((error) => console.error("Error connecting to the database:", error));
 
 // Create drizzle instance
-export const db = drizzle(client, { schema, logger: true });
+export const db = drizzle(client, { schema, logger: false });
 
 // Export individual tables for easier access
 export const { 
