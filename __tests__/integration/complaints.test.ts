@@ -19,7 +19,7 @@ describe('Complaint Integration Tests', () => {
     description: 'The booking system froze.',
   };
 
-  // ✅ Positive Tests
+  //+tests
 
   test('POST /complaints - create a new complaint', async () => {
     const res = await request(app).post('/complaints').send(validComplaint);
@@ -76,7 +76,7 @@ describe('Complaint Integration Tests', () => {
     expect(res.body).toHaveProperty('error');
   });
 
-  // ❌ Negative Tests
+  // -test
 
   test('POST /complaints - should fail with missing fields', async () => {
     const res = await request(app).post('/complaints').send({ subject: 'Missing description' });

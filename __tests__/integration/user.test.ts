@@ -26,7 +26,7 @@ describe('User Integration Tests', () => {
     await db.delete(users).where(eq(users.email, testUser.email));
   });
 
-  // ✅ Positive Tests
+  
 
   test('POST /users/register - register new user', async () => {
     const res = await request(app).post('/users/register').send(testUser);
@@ -87,7 +87,7 @@ describe('User Integration Tests', () => {
     expect(check).toBeUndefined();
   });
 
-  // ❌ Negative Tests
+ 
 
   test('POST /users/register - should fail with missing required fields', async () => {
     const res = await request(app).post('/users/register').send({ email: 'test@no.com' });

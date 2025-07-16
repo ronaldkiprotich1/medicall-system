@@ -23,7 +23,7 @@ describe('Prescription Integration Tests', () => {
     notes: 'Test prescription',
   };
 
-  // ✅ Positive Tests
+  // +tests
 
   test('POST /prescriptions - create a new prescription', async () => {
     const res = await request(app).post('/prescriptions').send(testData);
@@ -73,7 +73,7 @@ describe('Prescription Integration Tests', () => {
     expect(check).toBeUndefined();
   });
 
-  // 🔴 Negative Tests
+  //-tests
 
   test('POST /prescriptions - should fail with missing required fields', async () => {
     const res = await request(app).post('/prescriptions').send({

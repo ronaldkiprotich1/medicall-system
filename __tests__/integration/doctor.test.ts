@@ -34,7 +34,7 @@ describe('Doctor API Integration Tests', () => {
   });
 
   const sampleDoctor = {
-    userId: 0, // set dynamically
+    userId: 0, 
     firstName: 'John',
     lastName: 'Doe',
     specialization: 'Cardiology',
