@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/11</span>
+                <span class='fraction'>15/15</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/11</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,51 +87,63 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// src/controllers/auth.controller.ts
 import { Request, Response } from 'express';
-import { AuthService } from './auth.service';
+import { AuthService } from '../../src/auth/auth.service';
 &nbsp;
 export class AuthController {
-<span class="fstat-no" title="function not covered" >  static </span>async register(req: Request, res: Response) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-      const user = <span class="cstat-no" title="statement not covered" >await AuthService.register(req.body);</span>
-<span class="cstat-no" title="statement not covered" >      res.status(201).json(user);</span>
-    } catch (error) {
-<span class="cstat-no" title="statement not covered" >      res.status(400).json({ error: (error as Error).message });</span>
+  static async register(req: Request, res: Response) {
+    try {
+      const user = await AuthService.register(req.body);
+      res.status(201).json(user);
+    } catch (error: any) {
+      const status = error.status || <span class="branch-1 cbranch-no" title="branch not covered" >400;</span>
+      const message = error.message || <span class="branch-1 cbranch-no" title="branch not covered" >'Registration failed';</span>
+      res.status(status).json({ error: message });
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  static </span>async login(req: Request, res: Response) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-      const { email, password } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-      const result = <span class="cstat-no" title="statement not covered" >await AuthService.login(email, password);</span>
-<span class="cstat-no" title="statement not covered" >      res.json(result);</span>
-    } catch (error) {
-<span class="cstat-no" title="statement not covered" >      res.status(401).json({ error: (error as Error).message });</span>
+  static async login(req: Request, res: Response) {
+    try {
+      const { email, password } = req.body;
+      const result = await AuthService.login(email, password);
+      res.status(200).json(result);
+    } catch (error: any) {
+      const status = error.status || <span class="branch-1 cbranch-no" title="branch not covered" >401;</span>
+      const message = error.message || <span class="branch-1 cbranch-no" title="branch not covered" >'Login failed';</span>
+      res.status(status).json({ error: message });
     }
   }
 }
@@ -142,7 +154,7 @@ export class AuthController {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-14T11:30:48.852Z
+                at 2025-07-16T05:54:07.420Z
             </div>
         <script src="../prettify.js"></script>
         <script>

@@ -11,16 +11,32 @@ export class AuthService {
     email: string;
     password: string;
   }) {
+    const { firstName, lastName, email, password } = userData;
+
+    // Basic validation
+    if (!firstName || !lastName || !email || !password) {
+      throw { status: 400, message: 'All fields are required' };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      throw { status: 400, message: 'Invalid email format' };
+    }
+
     const existingUser = await db.query.users.findFirst({
-      where: eq(users.email, userData.email),
+      where: eq(users.email, email),
     });
 
-    if (existingUser) throw new Error('Email already in use');
+    if (existingUser) {
+      throw { status: 400, message: 'Email already in use' };
+    }
 
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const [user] = await db.insert(users).values({
-      ...userData,
+      firstName,
+      lastName,
+      email,
       password: hashedPassword,
     }).returning();
 
@@ -28,14 +44,27 @@ export class AuthService {
   }
 
   static async login(email: string, password: string) {
+    if (!email || !password) {
+      throw { status: 400, message: 'Email and password are required' };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      throw { status: 400, message: 'Invalid email format' };
+    }
+
     const user = await db.query.users.findFirst({
       where: eq(users.email, email),
     });
 
-    if (!user) throw new Error('Invalid email or password');
+    if (!user) {
+      throw { status: 401, message: 'Invalid email or password' };
+    }
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) throw new Error('Invalid email or password');
+    if (!valid) {
+      throw { status: 401, message: 'Invalid email or password' };
+    }
 
     const token = jwt.sign(
       { userId: user.userId, role: user.role },

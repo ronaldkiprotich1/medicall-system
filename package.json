@@ -11,7 +11,11 @@
     "migrate": "tsx src/drizzle/migrate.ts",
     "seed": "tsx src/Drizzle/seed.ts seed",
     "test": "jest",
-    "load:user": "k6 run load-tests/smoke/user.get.load.ts"
+    "load:user": "k6 run load-tests/smoke/user.get.load.ts",
+    "load:doctor": "k6 run load-tests/smoke/doctor.get.load.ts",
+    "load:payment": "k6 run load-tests/smoke/payment.get.load.ts",
+    "load:auth:register": "k6 run api/load-tests/smoke/register.login.ts",
+  "load:auth:login": "k6 run api/load-tests/smoke/login.smoke.ts"
   },
   "keywords": [],
   "author": "",

@@ -17,11 +17,13 @@ describe('Prescription Integration Tests', () => {
     appointmentId: 1,
     doctorId: 1,
     patientId: 1,
-    medications: JSON.stringify(['Ibuprofen']), // ✅ stringified array
+    medications: JSON.stringify(['Ibuprofen']),
     dosage: '200mg twice daily',
     instructions: 'Take with food',
     notes: 'Test prescription',
   };
+
+  // ✅ Positive Tests
 
   test('POST /prescriptions - create a new prescription', async () => {
     const res = await request(app).post('/prescriptions').send(testData);
@@ -69,5 +71,52 @@ describe('Prescription Integration Tests', () => {
     });
 
     expect(check).toBeUndefined();
+  });
+
+  // 🔴 Negative Tests
+
+  test('POST /prescriptions - should fail with missing required fields', async () => {
+    const res = await request(app).post('/prescriptions').send({
+      notes: 'Missing fields',
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty('error');
+  });
+
+  test('POST /prescriptions - should fail with invalid medication format', async () => {
+    const res = await request(app).post('/prescriptions').send({
+      ...testData,
+      medications: ['Not a string'], // invalid format
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty('error');
+  });
+
+  test('GET /prescriptions/:id - should return 404 for non-existent ID', async () => {
+    const res = await request(app).get('/prescriptions/999999');
+    expect(res.statusCode).toBe(404);
+    expect(res.body).toHaveProperty('error');
+  });
+
+  test('PUT /prescriptions/:id - should return 404 for non-existent ID', async () => {
+    const res = await request(app).put('/prescriptions/999999').send({
+      medications: JSON.stringify(['UpdatedDrug']),
+    });
+
+    expect(res.statusCode).toBe(404);
+    expect(res.body).toHaveProperty('error');
+  });
+
+  test('PUT /prescriptions/:id - should return 400 for invalid input', async () => {
+    const [created] = await db.insert(prescriptions).values(testData).returning();
+
+    const res = await request(app).put(`/prescriptions/${created.prescriptionId}`).send({
+      medications: 1234, // invalid type
+    });
+
+    expect(res.statusCode).toBe(400);
+    expect(res.body).toHaveProperty('error');
   });
 });

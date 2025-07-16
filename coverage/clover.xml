@@ -1,118 +1,234 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752494729339" clover="3.2.0">
-  <project timestamp="1752494729339" name="All files">
-    <metrics statements="236" coveredstatements="201" conditionals="18" coveredconditionals="17" methods="88" coveredmethods="65" elements="342" coveredelements="283" complexity="0" loc="236" ncloc="236" packages="7" files="15" classes="15"/>
+<coverage generated="1752645247531" clover="3.2.0">
+  <project timestamp="1752645247531" name="All files">
+    <metrics statements="478" coveredstatements="418" conditionals="151" coveredconditionals="132" methods="119" coveredmethods="102" elements="748" coveredelements="652" complexity="0" loc="478" ncloc="478" packages="8" files="23" classes="23"/>
     <package name="Drizzle">
       <metrics statements="49" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="21" coveredmethods="8"/>
       <file name="db.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\Drizzle\db.ts">
         <metrics statements="20" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="3" count="8" type="stmt"/>
-        <line num="4" count="8" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="12" count="8" type="stmt"/>
-        <line num="13" count="8" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="2" count="7" type="stmt"/>
+        <line num="3" count="7" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="21" count="8" type="stmt"/>
-        <line num="25" count="8" type="stmt"/>
-        <line num="34" count="8" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="34" count="7" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
-        <line num="43" count="8" type="stmt"/>
+        <line num="43" count="7" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="48" count="8" type="stmt"/>
+        <line num="48" count="7" type="stmt"/>
       </file>
       <file name="schema.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\Drizzle\schema.ts">
         <metrics statements="29" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="6"/>
-        <line num="1" count="8" type="stmt"/>
-        <line num="2" count="8" type="stmt"/>
-        <line num="5" count="8" type="stmt"/>
-        <line num="6" count="8" type="stmt"/>
-        <line num="7" count="8" type="stmt"/>
-        <line num="8" count="8" type="stmt"/>
-        <line num="9" count="8" type="stmt"/>
-        <line num="12" count="8" type="stmt"/>
-        <line num="27" count="8" type="stmt"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="2" count="7" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="7" count="7" type="stmt"/>
+        <line num="8" count="7" type="stmt"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="43" count="8" type="stmt"/>
+        <line num="43" count="7" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
-        <line num="58" count="8" type="stmt"/>
+        <line num="58" count="7" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
         <line num="61" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="72" count="8" type="stmt"/>
+        <line num="72" count="7" type="stmt"/>
         <line num="74" count="0" type="stmt"/>
-        <line num="86" count="8" type="stmt"/>
+        <line num="86" count="7" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
         <line num="96" count="0" type="stmt"/>
-        <line num="104" count="8" type="stmt"/>
-        <line num="114" count="8" type="stmt"/>
-        <line num="123" count="8" type="stmt"/>
-        <line num="137" count="8" type="stmt"/>
-        <line num="152" count="8" type="stmt"/>
-        <line num="160" count="8" type="stmt"/>
+        <line num="104" count="7" type="stmt"/>
+        <line num="114" count="7" type="stmt"/>
+        <line num="123" count="7" type="stmt"/>
+        <line num="137" count="7" type="stmt"/>
+        <line num="152" count="7" type="stmt"/>
+        <line num="160" count="7" type="stmt"/>
       </file>
     </package>
     <package name="appointment">
-      <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
+      <metrics statements="60" coveredstatements="50" conditionals="15" coveredconditionals="14" methods="15" coveredmethods="15"/>
       <file name="appointment.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\appointment\appointment.controller.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <metrics statements="38" coveredstatements="28" conditionals="15" coveredconditionals="14" methods="5" coveredmethods="5"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="31" count="2" type="cond" truecount="6" falsecount="0"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="48" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="64" count="2" type="cond" truecount="4" falsecount="1"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+      </file>
+      <file name="appointment.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\appointment\appointment.router.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="14" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
       <file name="appointment.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\appointment\appointment.service.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="auth">
+      <metrics statements="51" coveredstatements="51" conditionals="28" coveredconditionals="24" methods="4" coveredmethods="4"/>
+      <file name="auth.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\auth\auth.controller.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="8" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="25" count="4" type="stmt"/>
+      </file>
+      <file name="auth.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\auth\auth.router.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="auth.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\auth\auth.service.ts">
+        <metrics statements="30" coveredstatements="30" conditionals="20" coveredconditionals="20" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="17" count="5" type="cond" truecount="6" falsecount="0"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="30" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="47" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="51" count="4" type="stmt"/>
+        <line num="52" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="56" count="3" type="stmt"/>
+        <line num="60" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="64" count="2" type="stmt"/>
+        <line num="65" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
       </file>
     </package>
     <package name="complaints">
-      <metrics statements="38" coveredstatements="38" conditionals="2" coveredconditionals="2" methods="15" coveredmethods="15"/>
+      <metrics statements="52" coveredstatements="51" conditionals="19" coveredconditionals="19" methods="15" coveredmethods="15"/>
       <file name="complaints.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\complaints\complaints.controller.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <metrics statements="30" coveredstatements="29" conditionals="19" coveredconditionals="19" methods="5" coveredmethods="5"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="11" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="13" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="30" count="2" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
+        <line num="15" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="23" count="3" type="cond" truecount="5" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="52" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
       </file>
       <file name="complaints.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\complaints\complaints.router.ts">
         <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
@@ -122,186 +238,339 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
       <file name="complaints.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\complaints\complaints.service.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
     </package>
     <package name="doctor">
-      <metrics statements="40" coveredstatements="26" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="5"/>
+      <metrics statements="63" coveredstatements="56" conditionals="12" coveredconditionals="10" methods="15" coveredmethods="15"/>
       <file name="doctor.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\doctor\doctor.controller.ts">
-        <metrics statements="27" coveredstatements="23" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
+        <metrics statements="36" coveredstatements="31" conditionals="12" coveredconditionals="10" methods="5" coveredmethods="5"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
-        <line num="19" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="41" count="0" type="stmt"/>
+        <line num="17" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
         <line num="46" count="2" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
+        <line num="47" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+      </file>
+      <file name="doctor.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\doctor\doctor.router.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
       <file name="doctor.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\doctor\doctor.service.ts">
-        <metrics statements="13" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <metrics statements="13" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
       </file>
     </package>
     <package name="payments">
-      <metrics statements="24" coveredstatements="19" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="5"/>
+      <metrics statements="60" coveredstatements="46" conditionals="22" coveredconditionals="16" methods="15" coveredmethods="12"/>
       <file name="payments.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\payments\payments.controller.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
+        <metrics statements="38" coveredstatements="26" conditionals="22" coveredconditionals="16" methods="5" coveredmethods="4"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="31" count="3" type="cond" truecount="6" falsecount="0"/>
         <line num="32" count="1" type="stmt"/>
+        <line num="35" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="63" count="3" type="stmt"/>
+        <line num="64" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="2" type="stmt"/>
+        <line num="68" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+      </file>
+      <file name="payments.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\payments\payments.router.ts">
+        <metrics statements="14" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
       <file name="payments.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\payments\payments.service.ts">
-        <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="4"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
       </file>
     </package>
     <package name="prescription">
-      <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
+      <metrics statements="56" coveredstatements="52" conditionals="26" coveredconditionals="22" methods="15" coveredmethods="15"/>
       <file name="prescription.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\prescription\prescription.controller.ts">
-        <metrics statements="16" coveredstatements="16" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="5"/>
+        <metrics statements="34" coveredstatements="30" conditionals="26" coveredconditionals="22" methods="5" coveredmethods="5"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="19" count="1" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="33" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="40" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="50" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="55" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="60" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+      </file>
+      <file name="prescription.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\prescription\prescription.router.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
       <file name="prescription.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\prescription\prescription.service.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
       </file>
     </package>
     <package name="user">
-      <metrics statements="37" coveredstatements="37" conditionals="8" coveredconditionals="7" methods="12" coveredmethods="12"/>
+      <metrics statements="87" coveredstatements="79" conditionals="29" coveredconditionals="27" methods="19" coveredmethods="18"/>
       <file name="user.controller.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\user\user.controller.ts">
-        <metrics statements="28" coveredstatements="28" conditionals="8" coveredconditionals="7" methods="6" coveredmethods="6"/>
+        <metrics statements="51" coveredstatements="44" conditionals="23" coveredconditionals="22" methods="6" coveredmethods="6"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="9" count="9" type="cond" truecount="7" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="52" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="69" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="75" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="85" count="3" type="stmt"/>
+        <line num="86" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="90" count="2" type="stmt"/>
+        <line num="91" count="2" type="stmt"/>
+        <line num="92" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+      </file>
+      <file name="user.router.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\user\user.router.ts">
+        <metrics statements="16" coveredstatements="16" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="9" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+      <file name="user.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\user\user.service.ts">
+        <metrics statements="20" coveredstatements="19" conditionals="6" coveredconditionals="5" methods="7" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="36" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
-        <line num="43" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-      </file>
-      <file name="user.service.ts" path="C:\Users\kiron\Desktop\Medical Appointment & Patient Management System\api\src\user\user.service.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="32" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="35" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
       </file>
     </package>
   </project>

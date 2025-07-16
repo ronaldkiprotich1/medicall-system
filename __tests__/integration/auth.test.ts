@@ -5,7 +5,6 @@ import { db, users } from '../../src/Drizzle/db';
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
 
-// Create a test Express app
 const app = express();
 app.use(express.json());
 app.use('/auth', authRoutes);
@@ -14,7 +13,6 @@ describe('Auth Integration Tests', () => {
   const testEmail = 'testuser@example.com';
   const testPassword = 'password123';
 
-  // Clean up before each test
   beforeEach(async () => {
     await db.delete(users).where(eq(users.email, testEmail));
   });
@@ -25,14 +23,12 @@ describe('Auth Integration Tests', () => {
 
   describe('POST /auth/register', () => {
     it('should register a new user', async () => {
-      const response = await request(app)
-        .post('/auth/register')
-        .send({
-          firstName: 'Test',
-          lastName: 'User',
-          email: testEmail,
-          password: testPassword,
-        });
+      const response = await request(app).post('/auth/register').send({
+        firstName: 'Test',
+        lastName: 'User',
+        email: testEmail,
+        password: testPassword,
+      });
 
       expect(response.status).toBe(201);
       expect(response.body).toHaveProperty('userId');
@@ -40,7 +36,6 @@ describe('Auth Integration Tests', () => {
     });
 
     it('should not allow duplicate email', async () => {
-      // Register the first time
       await request(app).post('/auth/register').send({
         firstName: 'Test',
         lastName: 'User',
@@ -48,22 +43,41 @@ describe('Auth Integration Tests', () => {
         password: testPassword,
       });
 
-      // Try registering again with same email
       const response = await request(app).post('/auth/register').send({
-        firstName: 'Another',
+        firstName: 'Duplicate',
         lastName: 'User',
         email: testEmail,
-        password: 'anotherpassword',
+        password: 'anotherpass',
       });
 
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty('error', 'Email already in use');
     });
+
+    it('should fail if required fields are missing', async () => {
+      const response = await request(app).post('/auth/register').send({
+        email: testEmail,
+      });
+
+      expect([400, 500]).toContain(response.status);
+      expect(response.body).toHaveProperty('error');
+    });
+
+    it('should fail with invalid email format', async () => {
+      const response = await request(app).post('/auth/register').send({
+        firstName: 'Test',
+        lastName: 'User',
+        email: 'invalid-email',
+        password: testPassword,
+      });
+
+      expect([400, 500]).toContain(response.status);
+      expect(response.body).toHaveProperty('error');
+    });
   });
 
   describe('POST /auth/login', () => {
     beforeEach(async () => {
-      // Manually insert hashed user to the DB
       const hashedPassword = await bcrypt.hash(testPassword, 10);
       await db.insert(users).values({
         firstName: 'Test',
@@ -102,6 +116,25 @@ describe('Auth Integration Tests', () => {
 
       expect(response.status).toBe(401);
       expect(response.body).toHaveProperty('error', 'Invalid email or password');
+    });
+
+    it('should fail login with missing password', async () => {
+      const response = await request(app).post('/auth/login').send({
+        email: testEmail,
+      });
+
+      expect([400, 500]).toContain(response.status);
+      expect(response.body).toHaveProperty('error');
+    });
+
+    it('should fail login with invalid email format', async () => {
+      const response = await request(app).post('/auth/login').send({
+        email: 'not-an-email',
+        password: testPassword,
+      });
+
+      expect([400, 500]).toContain(response.status);
+      expect(response.body).toHaveProperty('error');
     });
   });
 });

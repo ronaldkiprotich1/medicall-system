@@ -13,7 +13,11 @@ export class DoctorController {
   }
 
   static async getById(req: Request, res: Response) {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid doctor ID' });
+    }
+
     try {
       const result = await DoctorService.getById(id);
       if (!result) return res.status(404).json({ error: 'Doctor not found' });
@@ -33,9 +37,14 @@ export class DoctorController {
   }
 
   static async update(req: Request, res: Response) {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid doctor ID' });
+    }
+
     try {
       const [doctor] = await DoctorService.update(id, req.body);
+      if (!doctor) return res.status(404).json({ error: 'Doctor not found' });
       res.json(doctor);
     } catch (error: any) {
       res.status(400).json({ message: "Failed to update doctor", error: error.message });
@@ -43,9 +52,16 @@ export class DoctorController {
   }
 
   static async delete(req: Request, res: Response) {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: 'Invalid doctor ID' });
+    }
+
     try {
-      await DoctorService.delete(id);
+      const deleted = await DoctorService.delete(id);
+      if (!deleted) {
+        return res.status(404).json({ error: 'Doctor not found' });
+      }
       res.status(204).send();
     } catch (error: any) {
       res.status(500).json({ message: "Failed to delete doctor", error: error.message });
