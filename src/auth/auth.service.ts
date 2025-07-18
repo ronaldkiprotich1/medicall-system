@@ -1,4 +1,4 @@
-// src/services/auth.service.ts
+
 import { db, users } from '../Drizzle/db';
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';

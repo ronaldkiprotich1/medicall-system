@@ -19,7 +19,7 @@ describe('Complaint Integration Tests', () => {
     description: 'The booking system froze.',
   };
 
-  //+tests
+   
 
   test('POST /complaints - create a new complaint', async () => {
     const res = await request(app).post('/complaints').send(validComplaint);

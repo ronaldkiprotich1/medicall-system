@@ -65,7 +65,7 @@ describe('Appointment Integration Tests', () => {
       doctorId,
       appointmentDate: '2025-08-01',
     });
-    expect(res.status).toBe(400); // Or 500 if not validated
+    expect(res.status).toBe(400);
   });
 
   test('GET /appointments - get all appointments', async () => {

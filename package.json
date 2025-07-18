@@ -16,6 +16,7 @@
     "load:payment": "k6 run load-tests/smoke/payment.get.load.ts",
     "load:auth:register": "k6 run api/load-tests/smoke/register.login.ts",
   "load:auth:login": "k6 run api/load-tests/smoke/login.smoke.ts"
+  
   },
   "keywords": [],
   "author": "",
