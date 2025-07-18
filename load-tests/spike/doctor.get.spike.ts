@@ -3,21 +3,21 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '10s', target: 5 },     // ramp-up to 5 VUs
-    { duration: '5s', target: 100 },    // spike to 100 VUs
-    { duration: '10s', target: 100 },   // hold at 100 VUs
-    { duration: '5s', target: 5 },      // ramp-down to 5 VUs
-    { duration: '10s', target: 5 },     // cool down
+    { duration: '10s', target: 5 },    
+    { duration: '5s', target: 100 },    
+    { duration: '10s', target: 100 },   
+    { duration: '5s', target: 5 },      
+    { duration: '10s', target: 5 },     
   ],
   thresholds: {
-    http_req_duration: ['p(95)<1200'],      // relax slightly from 1000ms → 1500ms
-    http_req_failed: ['rate<0.01'],         // stay strict on failures
+    http_req_duration: ['p(95)<1200'],      
+    http_req_failed: ['rate<0.01'],         
   },
-  // Increase timeout to handle slow response under load
+  
   httpReqTimeout: '10s',
 };
 
-const BASE_URL = 'http://localhost:8081'; // adjust if needed
+const BASE_URL = 'http://localhost:8081'; 
 
 export default function () {
   const res = http.get(`${BASE_URL}/api/doctor`, {
@@ -32,5 +32,5 @@ export default function () {
     'response time < 1000ms': (r) => r.timings.duration < 1000,
   });
 
-  sleep(1); // pacing: each VU waits 1s before next iteration
+  sleep(1); 
 }

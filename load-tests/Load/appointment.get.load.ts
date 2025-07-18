@@ -16,7 +16,7 @@ export const options = {
 const BASE_URL = 'http://localhost:8081'; 
 
 export default function () {
-  const res = http.get(`${BASE_URL}/appointments`);
+  const res = http.get(`${BASE_URL}/api/appointments`);
 
   check(res, {
     'status is 200': (r) => r.status === 200,

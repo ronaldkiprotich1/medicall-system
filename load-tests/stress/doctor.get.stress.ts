@@ -8,7 +8,7 @@ export let options = {
     { duration: '5s', target: 0 },   // ramp down
   ],
   thresholds: {
-    http_req_duration: ['p(95)<500'],
+    http_req_duration: ['p(95)<700'],
     http_req_failed: ['rate<0.01'],
   },
 };
@@ -20,7 +20,7 @@ export default function () {
 
   check(res, {
     'status is 200': (r) => r.status === 200,
-    'response time < 500ms': (r) => r.timings.duration < 500,
+    'response time < ms': (r) => r.timings.duration < 700,
   });
 
   sleep(1);

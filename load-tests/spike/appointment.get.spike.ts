@@ -3,13 +3,13 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '30s', target: 10 },   // Ramp-up to 10 users
-    { duration: '10s', target: 100 },  // Sudden spike to 100 users
-    { duration: '30s', target: 10 },   // Ramp-down to 10 users
+    { duration: '30s', target: 10 },  
+    { duration: '10s', target: 100 }, 
+    { duration: '30s', target: 10 },   
   ],
   thresholds: {
-    http_req_duration: ['p(95)<1000'], // 95% of requests should be < 1000ms
-    http_req_failed: ['rate<0.01'],    // <1% failure rate
+    http_req_duration: ['p(95)<1000'], 
+    http_req_failed: ['rate<0.01'],    
   },
 };
 

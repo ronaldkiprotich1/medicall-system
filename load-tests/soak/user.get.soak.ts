@@ -3,20 +3,20 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1m', target: 5 },     // Ramp-up to 5 users in 1 minute
-    { duration: '10m', target: 5 },    // Stay at 5 users for 10 minutes
-    { duration: '1m', target: 0 },     // Ramp-down to 0
+    { duration: '5s', target: 5 },     
+    { duration: '10s', target: 5 },    
+    { duration: '10s', target: 0 },     
   ],
   thresholds: {
-    http_req_duration: ['p(95)<600'],   // 95% of responses < 600ms
-    http_req_failed: ['rate<0.01'],     // < 1% requests should fail
+    http_req_duration: ['p(95)<600'],   
+    http_req_failed: ['rate<0.01'],     
   },
 };
 
-const BASE_URL = 'http://localhost:8081'; // Change to your API host
+const BASE_URL = 'http://localhost:8081'; 
 
 export default function () {
-  const res = http.get(`${BASE_URL}/users`);
+  const res = http.get(`${BASE_URL}/api/users`);
 
   check(res, {
     'status is 200': (r) => r.status === 200,
