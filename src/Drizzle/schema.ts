@@ -1,4 +1,6 @@
-import { pgTable, serial, varchar, text, timestamp, pgEnum, integer, decimal, boolean, date, time } from 'drizzle-orm/pg-core';
+import {
+  pgTable, serial, varchar, text, timestamp, pgEnum, integer, decimal, boolean, date, time
+} from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 
 // Enums
@@ -19,6 +21,7 @@ export const users = pgTable('users', {
   address: text('address'),
   role: userRoleEnum('role').default('user').notNull(),
   isVerified: boolean('is_verified').default(false),
+  verificationCode: varchar('verification_code', { length: 255 }), // ✅ NEW FIELD
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
@@ -31,7 +34,7 @@ export const doctors = pgTable('doctors', {
   lastName: varchar('last_name', { length: 100 }).notNull(),
   specialization: varchar('specialization', { length: 100 }).notNull(),
   contactPhone: varchar('contact_phone', { length: 20 }),
-  availableDays: varchar('available_days', { length: 255 }), // JSON string of available days
+  availableDays: varchar('available_days', { length: 255 }),
   consultationFee: decimal('consultation_fee', { precision: 10, scale: 2 }),
   biography: text('biography'),
   isActive: boolean('is_active').default(true),
@@ -60,7 +63,7 @@ export const prescriptions = pgTable('prescriptions', {
   appointmentId: integer('appointment_id').references(() => appointments.appointmentId).notNull(),
   doctorId: integer('doctor_id').references(() => doctors.doctorId).notNull(),
   patientId: integer('patient_id').references(() => users.userId).notNull(),
-  medications: text('medications').notNull(), // JSON string of medications
+  medications: text('medications').notNull(),
   dosage: text('dosage'),
   instructions: text('instructions'),
   notes: text('notes'),
@@ -75,7 +78,7 @@ export const payments = pgTable('payments', {
   amount: decimal('amount', { precision: 10, scale: 2 }).notNull(),
   paymentStatus: paymentStatusEnum('payment_status').default('Pending').notNull(),
   transactionId: varchar('transaction_id', { length: 255 }),
-  paymentMethod: varchar('payment_method', { length: 50 }), // 'stripe', 'mpesa', etc.
+  paymentMethod: varchar('payment_method', { length: 50 }),
   stripePaymentIntentId: varchar('stripe_payment_intent_id', { length: 255 }),
   paymentDate: timestamp('payment_date'),
   createdAt: timestamp('created_at').defaultNow().notNull(),
@@ -91,14 +94,12 @@ export const complaints = pgTable('complaints', {
   description: text('description').notNull(),
   status: complaintStatusEnum('status').default('Open').notNull(),
   adminResponse: text('admin_response'),
-  priority: varchar('priority', { length: 20 }).default('Medium'), // 'Low', 'Medium', 'High', 'Urgent'
+  priority: varchar('priority', { length: 20 }).default('Medium'),
   resolvedAt: timestamp('resolved_at'),
-  assignedTo: integer('assigned_to').references(() => users.userId), // Admin user who handled the complaint
+  assignedTo: integer('assigned_to').references(() => users.userId),
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 });
-
-
 
 // Relations
 export const usersRelations = relations(users, ({ many, one }) => ({
@@ -154,7 +155,6 @@ export const paymentsRelations = relations(payments, ({ one }) => ({
     fields: [payments.appointmentId],
     references: [appointments.appointmentId],
   }),
-  
 }));
 
 export const complaintsRelations = relations(complaints, ({ one }) => ({
@@ -172,7 +172,7 @@ export const complaintsRelations = relations(complaints, ({ one }) => ({
   }),
 }));
 
-// Type exports for TypeScript
+// Type Exports
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
 export type Doctor = typeof doctors.$inferSelect;

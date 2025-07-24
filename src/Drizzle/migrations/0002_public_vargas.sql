@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "verification_code" SET DATA TYPE varchar(255);
