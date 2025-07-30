@@ -10,6 +10,14 @@ export class ComplaintService {
     return db.query.complaints.findFirst({ where: eq(complaints.complaintId, id) });
   }
 
+  static getByUserId(userId: number) {
+    return db.select().from(complaints).where(eq(complaints.userId, userId));
+  }
+
+  static getByAppointmentId(appointmentId: number) {
+    return db.select().from(complaints).where(eq(complaints.relatedAppointmentId, appointmentId));
+  }
+
   static create(data: typeof complaints.$inferInsert) {
     return db.insert(complaints).values(data).returning();
   }

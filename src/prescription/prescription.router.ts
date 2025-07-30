@@ -3,6 +3,20 @@ import { PrescriptionController } from './prescription.controller';
 
 const router = Router();
 
+// Custom filtered routes (IMPORTANT: placed before /:id)
+router.get('/appointment/:appointmentId', async (req: Request, res: Response) => {
+  await PrescriptionController.getByAppointmentId(req, res);
+});
+
+router.get('/doctor/:doctorId', async (req: Request, res: Response) => {
+  await PrescriptionController.getByDoctorId(req, res);
+});
+
+router.get('/patient/:patientId', async (req: Request, res: Response) => {
+  await PrescriptionController.getByPatientId(req, res);
+});
+
+// Default CRUD routes
 router.get('/', async (req: Request, res: Response) => {
   await PrescriptionController.getAll(req, res);
 });

@@ -7,7 +7,9 @@ export class PrescriptionService {
   }
 
   static getById(id: number) {
-    return db.query.prescriptions.findFirst({ where: eq(prescriptions.prescriptionId, id) });
+    return db.query.prescriptions.findFirst({
+      where: eq(prescriptions.prescriptionId, id),
+    });
   }
 
   static create(data: typeof prescriptions.$inferInsert) {
@@ -15,11 +17,25 @@ export class PrescriptionService {
   }
 
   static update(id: number, data: Partial<typeof prescriptions.$inferInsert>) {
-    return db.update(prescriptions).set(data).where(eq(prescriptions.prescriptionId, id)).returning();
+    return db.update(prescriptions)
+      .set(data)
+      .where(eq(prescriptions.prescriptionId, id))
+      .returning();
   }
 
   static delete(id: number) {
     return db.delete(prescriptions).where(eq(prescriptions.prescriptionId, id));
   }
-}
 
+  static getByAppointmentId(appointmentId: number) {
+    return db.select().from(prescriptions).where(eq(prescriptions.appointmentId, appointmentId));
+  }
+
+  static getByDoctorId(doctorId: number) {
+    return db.select().from(prescriptions).where(eq(prescriptions.doctorId, doctorId));
+  }
+
+  static getByPatientId(patientId: number) {
+    return db.select().from(prescriptions).where(eq(prescriptions.patientId, patientId));
+  }
+}

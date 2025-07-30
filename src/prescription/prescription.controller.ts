@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { PrescriptionService } from '../prescription/prescription.service';
+import { PrescriptionService } from './prescription.service';
 
 export class PrescriptionController {
   static async getAll(_req: Request, res: Response) {
@@ -14,7 +14,9 @@ export class PrescriptionController {
     }
 
     const result = await PrescriptionService.getById(id);
-    if (!result) return res.status(404).json({ error: 'Prescription not found' });
+    if (!result) {
+      return res.status(404).json({ error: 'Prescription not found' });
+    }
 
     res.json(result);
   }
@@ -76,5 +78,32 @@ export class PrescriptionController {
     }
 
     res.status(204).send();
+  }
+
+  static async getByAppointmentId(req: Request, res: Response) {
+    const appointmentId = parseInt(req.params.appointmentId);
+    if (isNaN(appointmentId)) {
+      return res.status(400).json({ error: 'Invalid appointment ID' });
+    }
+    const result = await PrescriptionService.getByAppointmentId(appointmentId);
+    res.json(result);
+  }
+
+  static async getByDoctorId(req: Request, res: Response) {
+    const doctorId = parseInt(req.params.doctorId);
+    if (isNaN(doctorId)) {
+      return res.status(400).json({ error: 'Invalid doctor ID' });
+    }
+    const result = await PrescriptionService.getByDoctorId(doctorId);
+    res.json(result);
+  }
+
+  static async getByPatientId(req: Request, res: Response) {
+    const patientId = parseInt(req.params.patientId);
+    if (isNaN(patientId)) {
+      return res.status(400).json({ error: 'Invalid patient ID' });
+    }
+    const result = await PrescriptionService.getByPatientId(patientId);
+    res.json(result);
   }
 }
